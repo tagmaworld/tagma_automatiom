@@ -8,6 +8,11 @@ Given('I am on DataGardener Website', function () {
 });
 
 Then('I should be able to see home page with {string}', function (message) {
+    client.getText("your_element_locator", function(result) {
+        //expect(result.value).to.equal("Gmail");
+        console.log(results);
+        console.log(result.value);
+       });
     return client.expect.element('.text-uppercase > strong:nth-child(1)').text.to.contain(message);
   });
 
@@ -17,6 +22,10 @@ When('I search for a company {string}', function (companyName) {
 });
 
 Then('I should be able to see results',async function () {
+    await sleep(5000);
+    return client.expect.element('#table-test').to.be.visible;
+});
+Then('I should be able to see home from top navi',async function () {
     await sleep(5000);
     return client.expect.element('#table-test').to.be.visible;
 });
