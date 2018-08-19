@@ -5,7 +5,7 @@
     "line": 1,
     "id": "google-search",
     "tags": [],
-    "uri": "features/google_search.feature",
+    "uri": "features\\google_search.feature",
     "elements": [
       {
         "id": "google-search;search-for-a-company",
@@ -21,11 +21,11 @@
             "line": 5,
             "name": "I am on DataGardener Website",
             "match": {
-              "location": "step_definitions/googleSearchSteps.js:22"
+              "location": "step_definitions\\googleSearchSteps.js:6"
             },
             "result": {
               "status": "passed",
-              "duration": 40397000000
+              "duration": 28823000000
             }
           },
           {
@@ -33,8 +33,12 @@
             "keyword": "Then ",
             "line": 6,
             "name": "I should be able to see home page with \"IN DEPTH ANALYTICS OF COMPANIES AND DIRECTORS\"",
+            "match": {
+              "location": "step_definitions\\googleSearchSteps.js:10"
+            },
             "result": {
-              "status": "undefined"
+              "status": "passed",
+              "duration": 48000000
             }
           },
           {
@@ -43,10 +47,11 @@
             "line": 7,
             "name": "I search for a company \"tagma world\"",
             "match": {
-              "location": "step_definitions/googleSearchSteps.js:38"
+              "location": "step_definitions\\googleSearchSteps.js:14"
             },
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 669000000
             }
           },
           {
@@ -55,10 +60,11 @@
             "line": 8,
             "name": "I should be able to see results",
             "match": {
-              "location": "step_definitions/googleSearchSteps.js:45"
+              "location": "step_definitions\\googleSearchSteps.js:19"
             },
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 5071000000
             }
           }
         ]
