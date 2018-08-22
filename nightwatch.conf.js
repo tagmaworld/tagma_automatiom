@@ -1,5 +1,6 @@
 const seleniumServer = require('selenium-server');
 const geckodriver = require('geckodriver');
+const chromeDriver = require('chromedriver');
 
 require('nightwatch-cucumber')({
   cucumberArgs: [
@@ -28,7 +29,7 @@ module.exports = {
       selenium_port: 4444,
       selenium_host: '127.0.0.1',
       desiredCapabilities: {
-        browserName: 'firefox',
+        browserName: 'chrome',
         javascriptEnabled: true
       }
     },
@@ -40,7 +41,7 @@ module.exports = {
       },
       selenium: {
         cli_args: {
-          'webdriver.geckodriver.driver': geckodriver.path
+          'webdriver.geckodriver.driver': chromeDriver.path
         }
       }
     }
