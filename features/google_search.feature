@@ -6,3 +6,4 @@ Feature: Google Search
         Then I should be able to see home page with "IN DEPTH ANALYTICS OF COMPANIES AND DIRECTORS"
         When I search for a company "tagma world"
         Then I should be able to see results
+       
