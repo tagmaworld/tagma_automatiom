@@ -1,6 +1,83 @@
 [
   {
     "keyword": "Feature",
+    "name": "Data Gardener home page",
+    "line": 1,
+    "id": "data-gardener-home-page",
+    "tags": [],
+    "uri": "features\\dataGardenerHome.feature",
+    "elements": [
+      {
+        "id": "data-gardener-home-page;search-for-a-company",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "Search for a company",
+        "tags": [
+          {
+            "name": "@homepage",
+            "line": 3
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I am on DataGardener Website",
+            "match": {
+              "location": "step_definitions\\googleSearchSteps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10090000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "I should be able to see home page with \"IN DEPTH ANALYTICS OF COMPANIES AND DIRECTORS\"",
+            "match": {
+              "location": "step_definitions\\googleSearchSteps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 90000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I search for a company \"tagma world\"",
+            "match": {
+              "location": "step_definitions\\googleSearchSteps.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 492000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "I should be able to see results",
+            "match": {
+              "location": "step_definitions\\googleSearchSteps.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5072000000
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "keyword": "Feature",
     "name": "Facts header navigation",
     "line": 2,
     "id": "facts-header-navigation",
@@ -10,7 +87,7 @@
       {
         "id": "facts-header-navigation;customer-click-on-facts-header",
         "keyword": "Scenario",
-        "line": 7,
+        "line": 4,
         "name": "Customer click on facts header",
         "tags": [
           {
@@ -23,40 +100,104 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 8,
+            "line": 5,
             "name": "I am on DataGardener Website",
             "match": {
               "location": "step_definitions\\googleSearchSteps.js:6"
             },
             "result": {
               "status": "passed",
-              "duration": 10551000000
+              "duration": 205000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 9,
+            "line": 6,
             "name": "Customer click on the facts header navigator",
             "match": {
               "location": "step_definitions\\googleSearchSteps.js:29"
             },
             "result": {
               "status": "passed",
-              "duration": 5256000000
+              "duration": 5158000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 10,
+            "line": 7,
             "name": "Customer should be able to see all the facts columns about the website",
             "match": {
               "location": "step_definitions\\googleSearchSteps.js:36"
             },
             "result": {
               "status": "passed",
-              "duration": 5092000000
+              "duration": 5056000000
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "keyword": "Feature",
+    "name": "services header navigation",
+    "line": 1,
+    "id": "services-header-navigation",
+    "tags": [],
+    "uri": "features\\services.feature",
+    "elements": [
+      {
+        "id": "services-header-navigation;customer-click-on-services-header",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Customer click on services header",
+        "tags": [
+          {
+            "name": "@services",
+            "line": 2
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on DataGardener Website",
+            "match": {
+              "location": "step_definitions\\googleSearchSteps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 72000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "Customer click on the services header navigator",
+            "match": {
+              "location": "step_definitions\\googleSearchSteps.js:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5170000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "Customer should be able to see all the services columns about the website",
+            "match": {
+              "location": "step_definitions\\googleSearchSteps.js:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5050000000
             }
           }
         ]
