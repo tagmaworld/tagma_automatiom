@@ -1,4 +1,4 @@
-Feature: Google Search
+Feature: Data Gardener home page
 
     @homepage
     Scenario: Search for a company

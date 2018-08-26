@@ -1,6 +1,7 @@
 #node files
 
 node_modules/
+reports/
 package-lock.json
 selenium-debug.log
 
