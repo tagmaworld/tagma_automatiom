@@ -1,6 +1,6 @@
 
 Feature: Facts header navigation
-  @facts
+  
       Scenario: Customer click on facts header
         Given I am on DataGardener Website
         When Customer click on the facts header navigator

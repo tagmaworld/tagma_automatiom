@@ -2,13 +2,11 @@ const { client, expect } = require('nightwatch-cucumber');
 const { Given, Then, When } = require('cucumber');
 // const sleep = require('thread-sleep');
 
-Given('when I am in DataGardener Website', function () {
-    return client.url(client.launch_url).waitForElementVisible('body', 20000);
-});
 
 
 Then('I should be able to see header navigation', function () {
-    return client.expect.element('.navbar-nav').to.be.visible;
+   return client.expect.element('.navbar-nav').to.be.visible;
+   
 });
 
 
