@@ -8,7 +8,10 @@ Given('I am on DataGardener Website', function () {
 });
 
 Then('I should be able to see home page with {string}', function (message) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> c3c9698237edae71676c6b8a640b2d0df8756464
     return client.expect.element('.text-uppercase > strong:nth-child(1)').text.to.contain(message);
 });
 
