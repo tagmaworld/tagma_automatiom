@@ -16,7 +16,7 @@ When('I search for a company {string}', function (companyName) {
       .setValue('.company_search', companyName).click('.btn-get-started');
 });
 
-Then('I should be able to see results',async function () {
+Then('I should be able to see result',async function () {
     await sleep(5000);
     return client.expect.element('#table-test').to.be.visible;
 });
