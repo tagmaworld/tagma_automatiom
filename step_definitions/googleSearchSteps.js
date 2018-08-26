@@ -36,6 +36,4 @@ Then('Customer should be able to see all the facts columns about the website',as
     await sleep(5000);
     return client.expect.element('#facts > div > div.row.counters').to.be.visible;
 
-
-
 });
