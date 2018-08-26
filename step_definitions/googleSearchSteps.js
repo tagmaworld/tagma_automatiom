@@ -12,6 +12,7 @@ Then('I should be able to see home page with {string}', function (message) {
 });
 
 When('I search for a company {string}', function (companyName) {
+    console.log('HP executed');
     return client.waitForElementVisible('.company_search', 20000)
         .setValue('.company_search', companyName).click('.btn-get-started');
 });
@@ -32,8 +33,22 @@ When('Customer click on the facts header navigator', async function () {
 
 });
 
-Then('Customer should be able to see all the facts columns about the website',async function () {
+Then('Customer should be able to see all the facts columns about the website', async function () {
     await sleep(5000);
+    console.log('facts executed');
     return client.expect.element('#facts > div > div.row.counters').to.be.visible;
+});
 
+
+
+When('Customer click on the services header navigator', async function () {
+    await sleep(5000);
+    console.log('services executed');
+    return client.waitForElementVisible("#navb > ul > li:nth-child(4) > a", 20000).click('#navb > ul > li:nth-child(4) > a');
+
+});
+
+Then('Customer should be able to see all the services columns about the website', async function () {
+     await sleep(5000);
+    return client.expect.element('#services > div > div.row').to.be.visible;
 });
