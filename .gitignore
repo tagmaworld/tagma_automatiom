@@ -1,7 +1,7 @@
 #node files
 
 node_modules/
-reports/
+reports/cucumber.json
 package-lock.json
 selenium-debug.log
 
