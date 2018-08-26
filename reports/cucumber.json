@@ -1,73 +1,62 @@
-<<<<<<< HEAD
-[]
-=======
 [
   {
     "keyword": "Feature",
-    "name": "Google Search",
-    "line": 1,
-    "id": "google-search",
+    "name": "Facts header navigation",
+    "line": 2,
+    "id": "facts-header-navigation",
     "tags": [],
-    "uri": "features\\google_search.feature",
+    "uri": "features\\facts.feature",
     "elements": [
       {
-        "id": "google-search;search-for-a-company",
+        "id": "facts-header-navigation;customer-click-on-facts-header",
         "keyword": "Scenario",
-        "line": 4,
-        "name": "Search for a company",
-        "tags": [],
+        "line": 7,
+        "name": "Customer click on facts header",
+        "tags": [
+          {
+            "name": "@facts",
+            "line": 3
+          }
+        ],
         "type": "scenario",
         "steps": [
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 5,
+            "line": 8,
             "name": "I am on DataGardener Website",
             "match": {
               "location": "step_definitions\\googleSearchSteps.js:6"
             },
             "result": {
               "status": "passed",
-              "duration": 28823000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 6,
-            "name": "I should be able to see home page with \"IN DEPTH ANALYTICS OF COMPANIES AND DIRECTORS\"",
-            "match": {
-              "location": "step_definitions\\googleSearchSteps.js:10"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 48000000
+              "duration": 10551000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 7,
-            "name": "I search for a company \"tagma world\"",
+            "line": 9,
+            "name": "Customer click on the facts header navigator",
             "match": {
-              "location": "step_definitions\\googleSearchSteps.js:14"
+              "location": "step_definitions\\googleSearchSteps.js:29"
             },
             "result": {
               "status": "passed",
-              "duration": 669000000
+              "duration": 5256000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 8,
-            "name": "I should be able to see results",
+            "line": 10,
+            "name": "Customer should be able to see all the facts columns about the website",
             "match": {
-              "location": "step_definitions\\googleSearchSteps.js:19"
+              "location": "step_definitions\\googleSearchSteps.js:36"
             },
             "result": {
               "status": "passed",
-              "duration": 5071000000
+              "duration": 5092000000
             }
           }
         ]
@@ -75,4 +64,3 @@
     ]
   }
 ]
->>>>>>> d246b23e4c365c1c137fce493c84e551a9ca41f2
