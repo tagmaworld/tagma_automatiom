@@ -35,7 +35,9 @@ When('Customer click on the facts header navigator', async function () {
 
 Then('Customer should be able to see all the facts columns about the website', async function () {
     await sleep(5000);
-    console.log('facts executed');
+    client.getText("#navb > ul > li:nth-child(3) > a", function (result) {
+        console.log(result.value);
+    });
     return client.expect.element('#facts > div > div.row.counters').to.be.visible;
 });
 
@@ -43,12 +45,14 @@ Then('Customer should be able to see all the facts columns about the website', a
 
 When('Customer click on the services header navigator', async function () {
     await sleep(5000);
-    console.log('services executed');
     return client.waitForElementVisible("#navb > ul > li:nth-child(4) > a", 20000).click('#navb > ul > li:nth-child(4) > a');
 
 });
 
 Then('Customer should be able to see all the services columns about the website', async function () {
-     await sleep(5000);
+    await sleep(5000);
+    client.getText("#navb > ul > li:nth-child(4) > a", function (result) {
+        console.log(result.value);
+    });
     return client.expect.element('#services > div > div.row').to.be.visible;
 });
