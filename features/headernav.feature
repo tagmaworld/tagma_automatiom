@@ -2,7 +2,7 @@ Feature:datagardner home page
     @header
     Scenario: identifying header navigation
         Given I am on DataGardener Website
-        Then  I can see home page with dataTable:
+        Then  I can see home page with dataTable: 
             | HOME              |
             | PRODUCT           |
             | FACTS             |
@@ -12,5 +12,6 @@ Feature:datagardner home page
             | CONTACT           |
             | COMPANIES NEAR ME |
             | LOGIN             |
+
 
 
