@@ -1,25 +1,25 @@
 {
-    "name": "tagma_sample",
-    "version": "1.0.0",
-    "description": "nightwatch cucumber e2e sample framework",
-    "main": "index.js",
-    "scripts": {
-      "test": "nightwatch"
-    },
-    "author": "Alok",
-    "license": "ISC",
-    "devDependencies": {
-      "cucumber": "^4.2.1",
-      "geckodriver": "^1.11.0",
-      "nightwatch": "^0.9.21",
-      "phantomjs-prebuilt": "^2.1.16",
-      "selenium-server": "^3.14.0"
-    },
-    "dependencies": {
-      "chromedriver": "^2.38.3",
-      "cucumber-pretty": "^1.4.4",
-      "jshint": "^2.9.5",
-      "nightwatch-cucumber": "^9.1.2",
-      "thread-sleep": "^2.1.0"
-    }
+  "name": "tagma_sample",
+  "version": "1.0.0",
+  "description": "nightwatch cucumber e2e sample framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "nightwatch"
+  },
+  "author": "Alok",
+  "license": "ISC",
+  "devDependencies": {
+    "cucumber": "^4.2.1",
+    "geckodriver": "^1.11.0",
+    "nightwatch": "^0.9.21",
+    "phantomjs-prebuilt": "^2.1.16",
+    "selenium-server": "^3.14.0"
+  },
+  "dependencies": {
+    "chromedriver": "^2.38.3",
+    "cucumber-pretty": "^1.4.4",
+    "jshint": "^2.9.5",
+    "nightwatch-cucumber": "^9.1.2",
+    "thread-sleep": "^2.1.0"
   }
+}
