@@ -4,7 +4,10 @@ const sleep = require('thread-sleep');
 
 
 Given('I am on DataGardener Website', function () {
-    return client.url(client.launch_url).waitForElementVisible('body', 20000);
+    return client.url(client.launch_url).waitForElementVisible('body', 20000)
+    .resizeWindow(1200 , 1000)
+    .waitForElementVisible("body > cookie-law > cookie-law-el > div > div > a > svg", 2000)
+    .click("body > cookie-law > cookie-law-el > div > div > a > svg");
 });
 
 Then('I should be able to see home page with {string}', function (message) {
@@ -49,6 +52,25 @@ When('Customer click on the services header navigator', async function () {
 });
 
 Then('Customer should be able to see all the services columns about the website', async function () {
-     await sleep(5000);
+    await sleep(5000);
     return client.expect.element('#services > div > div.row').to.be.visible;
 });
+
+When('I want to filter record by county', async function () {
+    await sleep(5000);
+    return client.waitForElementVisible("div.list-group-item:nth-child(10) > div:nth-child(1) > a:nth-child(1) > strong", 20000).click("div.list-group-item:nth-child(10) > div:nth-child(1) > a:nth-child(1) > strong");
+
+})
+When('I type county {string}', async function (county) {
+    await sleep(5000);
+    return client.waitForElementVisible("#county", 20000)
+    .setValue("#county", county)
+    .pause(2000)
+    .waitForElementVisible(".dropdown-item.active", 20000)
+        .click(".dropdown-item.active")
+        .pause(2000)
+        .expect.element("#table > tbody > tr > td:nth-child(2) > a.ml-3.display-table").to.be.visible;
+        
+
+
+})
