@@ -5,7 +5,7 @@ const sleep = require('thread-sleep');
 
 Given('I am on DataGardener Website', function () {
     return client.url(client.launch_url).waitForElementVisible('body', 20000)
-    .waitForElementVisible("body > cookie-law > cookie-law-el > div > div > a > svg", 20000)
+        .waitForElementVisible("body > cookie-law > cookie-law-el > div > div > a > svg", 20000)
         .click("body > cookie-law > cookie-law-el > div > div > a > svg");
 });
 
@@ -56,7 +56,7 @@ Then('Customer should be able to see all the services columns about the website'
     client.getText("#navb > ul > li:nth-child(4) > a", function (result) {
         console.log(result.value);
     });
-    return client.expect.element('#services > div > div.row').to.be.visible;    
+    return client.expect.element('#services > div > div.row').to.be.visible;
 });
 
 When('I click the login', async function () {
@@ -101,4 +101,25 @@ When('I type County  {string}', function (County) {
 Then('I should be able to see the results', async function () {
     await sleep(20000);
     return client.expect.element('#table > tbody > tr > td:nth-child(2) > a.ml-3.display-table').to.be.visible;
+});
+When('I click on the pricing option', async function () {
+
+    await sleep(5000);
+    return client.waitForElementVisible("#navb > ul > li:nth-child(6) > a", 20000)
+        .click('#navb > ul > li:nth-child(6) > a');
+});
+Then('I should be presented subcription options', async function () {
+
+    await sleep(5000);
+    return client.waitForElementVisible("#navb > ul > li:nth-child(6) > a", 20000);
+});
+When('I click on trial plan signup button', async function () {
+
+    await sleep(20000);
+    return client.waitForElementVisible("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a", 20000)
+        .click('#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a');
+});
+Then('I should be presented with registation page', async function () {
+    await sleep(20000);
+    return client.expect.element('#top_signUp > div > form > div > div > div > div > div > div > div.col-md-12.text-center').to.be.visible;
 });
