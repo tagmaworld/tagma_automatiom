@@ -1,4 +1,4 @@
-const { client, expect } = require('nightwatch-cucumber');
+const { client, expect, assert } = require('nightwatch-cucumber');
 const { Given, Then } = require('cucumber');
 // const sleep = require('thread-sleep')
 
@@ -6,47 +6,25 @@ const { Given, Then } = require('cucumber');
 //     return client.url(client.launch_url).waitForElementVisible('body', 20000);
 // });
 
-Then('I can see home page with dataTable:', function (dataTable) {
-    return client.getText("#navb > ul > li:nth-child(1) > a", function (result) {
-        console.log(result.value);
-
-        client.getText("#navb > ul > li:nth-child(2) > a", function (result) {
-            console.log(result.value);
-
-            client.getText("#navb > ul > li:nth-child(3) > a", function (result) {
-                console.log(result.value);
-                client.getText("#navb > ul > li:nth-child(4) > a", function (result) {
-                    console.log(result.value);
-                    client.getText("#navb > ul > li:nth-child(5) > a", function (result) {
-                        console.log(result.value);
-                        client.getText("#navb > ul > li:nth-child(6) > a", function (result) {
-                            console.log(result.value);
-                            client.getText("#navb > ul > li:nth-child(7) > a", function (result) {
-                                console.log(result.value);
-                                client.getText("#navb > ul > li:nth-child(8) > a", function (result) {
-                                    console.log(result.value);
-                                    client.getText(".btnLogin", function (result) {
-                                        console.log(result.value);
-
-                                    });
-
-                                });
-
-
-                            });
-
-                        });
-                    });
-
-                });
-
-
-            });
-
+Then('I can see home page with details:', async function (dataTable) {
+    data = dataTable.rows();
+    for(var i=1; i<=8;i++) {
+        var text =    await client.waitForElementVisible('#navb > ul > li:nth-child(' + i+ ') > a', 20000)
+        .getText('#navb > ul > li:nth-child(' + i+ ') > a', function(result){
+           if(result.value == data[i-1]){
+            console.log('match found')
+           }
         });
+       }
+    
+   
+  
+});
 
-    });
-
+Then("I should be able to see header navigations",async function(){
+    
+   
+    
 });
 
 

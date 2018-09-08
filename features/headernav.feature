@@ -1,8 +1,10 @@
 Feature:datagardner home page
     @header
-    Scenario: identifying header navigation
+    Scenario: identifying header navigation exists and print the value
         Given I am on DataGardener Website
-        Then  I can see home page with dataTable: 
+        Then I should be able to see header navigations
+        Then  I can see home page with details:
+            | data              |
             | HOME              |
             | PRODUCT           |
             | FACTS             |
@@ -11,7 +13,7 @@ Feature:datagardner home page
             | PRICING           |
             | CONTACT           |
             | COMPANIES NEAR ME |
-            | LOGIN             |
+
 
 
 
