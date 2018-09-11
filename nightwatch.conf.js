@@ -5,7 +5,11 @@ const chromeDriver = require('chromedriver');
 require('nightwatch-cucumber')({
   cucumberArgs: [
     '--require', 'step_definitions',
+<<<<<<< HEAD
    // '--tags' , '@signup',
+=======
+    // '--tags' , '@registration',
+>>>>>>> 04ef740b85ba1e3eaec74db175c0b47350a2353a
     '--format', 'node_modules/cucumber-pretty',
     '--format', 'json:reports/cucumber.json',
     'features']

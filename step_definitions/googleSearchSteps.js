@@ -1,13 +1,23 @@
 const { client, expect } = require('nightwatch-cucumber');
 const { Given, Then, When } = require('cucumber');
 const sleep = require('thread-sleep');
+var coockiePopUp = "body > cookie-law > cookie-law-el > div > div > a > svg";
+let popupclose;
 
 
 Given('I am on DataGardener Website', function () {
-    return client.url(client.launch_url).waitForElementVisible('body', 20000)
-        .waitForElementVisible("body > cookie-law > cookie-law-el > div > div > a > svg", 20000)
-        .click("body > cookie-law > cookie-law-el > div > div > a > svg");
-});
+    if (popupclose != 20) {
+        console.log('condition passed');
+        popupclose = 20;
+        return client.url(client.launch_url).waitForElementVisible('body', 20000)
+            .waitForElementVisible(coockiePopUp, 20000).click(coockiePopUp);
+    } else {
+        console.log('condition not passed')
+        return client.url(client.launch_url).waitForElementVisible('body', 20000)
+    }
+}
+
+);
 
 Then('I should be able to see home page with {string}', function (message) {
     return client.expect.element('.text-uppercase > strong:nth-child(1)').text.to.contain(message);
@@ -108,7 +118,7 @@ When('I click on the pricing option', async function () {
     return client.waitForElementVisible("#navb > ul > li:nth-child(6) > a", 20000)
         .click('#navb > ul > li:nth-child(6) > a');
 });
-Then('I should be presented subcription options', async function () {
+Then('I should be presented with subcription options', async function () {
 
     await sleep(5000);
     return client.waitForElementVisible("#navb > ul > li:nth-child(6) > a", 20000);
@@ -116,10 +126,15 @@ Then('I should be presented subcription options', async function () {
 When('I click on trial plan signup button', async function () {
 
     await sleep(20000);
+    console.log('Signup button');
+    // return client.waitForElementVisible(".color1 > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)", 20000)
+    //     .click('.color1 > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)');
     return client.waitForElementVisible("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a", 20000)
-        .click('#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a');
+    .click('#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a');
 });
 Then('I should be presented with registation page', async function () {
     await sleep(20000);
-    return client.expect.element('#top_signUp > div > form > div > div > div > div > div > div > div.col-md-12.text-center').to.be.visible;
+    console.log('Signup page');
+    // return client.expect.element('form.ng-invalid > div:nth-child(1) > label:nth-child(1)').to.be.visible;
+    return client.expect.element('#top_signUp > div > form > div > div > div > div > div > div > div.col-md-12.text-center > h4').to.be.visible;
 });
