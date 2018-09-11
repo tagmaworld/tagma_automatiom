@@ -138,3 +138,5 @@ Then('I should be presented with registation page', async function () {
     // return client.expect.element('form.ng-invalid > div:nth-child(1) > label:nth-child(1)').to.be.visible;
     return client.expect.element('#top_signUp > div > form > div > div > div > div > div > div > div.col-md-12.text-center > h4').to.be.visible;
 });
+
+
