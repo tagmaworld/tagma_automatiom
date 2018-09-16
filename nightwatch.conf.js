@@ -5,7 +5,7 @@ const chromeDriver = require('chromedriver');
 require('nightwatch-cucumber')({
   cucumberArgs: [
     '--require', 'step_definitions',
-    '--tags' , '@registration',
+    '--tags' , '@homepage',
     '--format', 'node_modules/cucumber-pretty',
     '--format', 'json:reports/cucumber.json',
     'features']
@@ -14,6 +14,7 @@ require('nightwatch-cucumber')({
 module.exports = {
   output_folder: 'reports',
   custom_assertions_path: '',
+  page_objects_path: 'dataGardenerPages',
   live_output: false,
   disable_colors: false,
   selenium: {

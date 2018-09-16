@@ -1,10 +1,7 @@
 const { client, expect, assert } = require('nightwatch-cucumber');
 const { Given, Then } = require('cucumber');
-// const sleep = require('thread-sleep')
+const sleep = require('thread-sleep');
 
-// Given('I am on DataGardener Website', function () {
-//     return client.url(client.launch_url).waitForElementVisible('body', 20000);
-// });
 
 Then('I can see home page with details:', async function (dataTable) {
     data = dataTable.rows();
@@ -22,9 +19,14 @@ Then('I can see home page with details:', async function (dataTable) {
 });
 
 Then("I should be able to see header navigations",async function(){
-    
-   
-    
+    await sleep(5000);
+   return client.elements( "css selector","#table > tbody > tr",function(result){
+       console.log("The total number of companies are  -----> " + result.value.length );
+        for(var i=1; i<= result.value.length; i++){
+           client.expect.element('#table > tbody > tr:nth-child(' + i +')').to.be.visible;
+        }
+    })
+
 });
 
 

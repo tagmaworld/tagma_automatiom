@@ -4,24 +4,27 @@ const sleep = require('thread-sleep');
 
 
 Given('I am on DataGardener Website', function () {
-    return client.url(client.launch_url).waitForElementVisible('body', 20000)
-        .waitForElementVisible("body > cookie-law > cookie-law-el > div > div > a > svg", 20000)
-        .click("body > cookie-law > cookie-law-el > div > div > a > svg");
+    const homePage = client.page.homePage();
+    homePage.navigate().waitForElementVisible('@wholePageBody', 20000);
+    // return client.url(client.launch_url).waitForElementVisible('body', 20000)
+    //     .waitForElementVisible("body > cookie-law > cookie-law-el > div > div > a > svg", 20000)
+    //     .click("body > cookie-law > cookie-law-el > div > div > a > svg");
 });
 
 Then('I should be able to see home page with {string}', function (message) {
-    return client.expect.element('.text-uppercase > strong:nth-child(1)').text.to.contain(message);
+    const homePage = client.page.homePage();
+    return homePage.expect.element('@homePageSubTitle').text.to.contain(message);
 });
 
 When('I search for a company {string}', function (companyName) {
-    console.log('HP executed');
-    return client.waitForElementVisible('.company_search', 20000)
-        .setValue('.company_search', companyName).click('.btn-get-started');
+    const homePage = client.page.homePage();
+    homePage.searchComapnyData(companyName);
+    homePage.clickSearchButton();
 });
 
 Then('I should be able to see results', async function () {
-    await sleep(5000);
-    return client.expect.element('#table-test').to.be.visible;
+    const homePage = client.page.homePage();
+    homePage.verifySearchResultAppearing();
 });
 Then('I should be able to see home from top navi', async function () {
     await sleep(5000);
@@ -114,10 +117,11 @@ Then('I should be presented subcription options', async function () {
     return client.waitForElementVisible("#navb > ul > li:nth-child(6) > a", 20000);
 });
 When('I click on trial plan signup button', async function () {
-
-    await sleep(20000);
-    return client.waitForElementVisible("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a", 20000)
-        .click('#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a');
+    const homePage = client.page.homePage();
+    homePage.waitForElementVisible({selector:'@signUpLink1', index:1}, 2000).click('@signUpLink1');
+   await sleep(20000);
+    // return client.waitForElementVisible("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a", 20000)
+    //     .click('#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a');
 });
 Then('I should be presented with registation page', async function () {
     await sleep(20000);
