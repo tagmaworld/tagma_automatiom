@@ -6,27 +6,12 @@ let popupclose;
 
 
 Given('I am on DataGardener Website', function () {
-<<<<<<< HEAD
     const homePage = client.page.homePage();
     homePage.navigate().waitForElementVisible('@wholePageBody', 20000);
     // return client.url(client.launch_url).waitForElementVisible('body', 20000)
     //     .waitForElementVisible("body > cookie-law > cookie-law-el > div > div > a > svg", 20000)
     //     .click("body > cookie-law > cookie-law-el > div > div > a > svg");
 });
-=======
-    if (popupclose != 20) {
-        console.log('condition passed');
-        popupclose = 20;
-        return client.url(client.launch_url).waitForElementVisible('body', 20000)
-            .waitForElementVisible(coockiePopUp, 20000).click(coockiePopUp);
-    } else {
-        console.log('condition not passed')
-        return client.url(client.launch_url).waitForElementVisible('body', 20000)
-    }
-}
-
-);
->>>>>>> f83eb33e806ed197cbdea60cd6cf3c75723f8863
 
 Then('I should be able to see home page with {string}', function (message) {
     const homePage = client.page.homePage();
@@ -134,21 +119,11 @@ Then('I should be presented with subcription options', async function () {
     return client.waitForElementVisible("#navb > ul > li:nth-child(6) > a", 20000);
 });
 When('I click on trial plan signup button', async function () {
-<<<<<<< HEAD
     const homePage = client.page.homePage();
     homePage.waitForElementVisible({selector:'@signUpLink1', index:1}, 2000).click('@signUpLink1');
    await sleep(20000);
     // return client.waitForElementVisible("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a", 20000)
     //     .click('#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a');
-=======
-
-    await sleep(20000);
-    console.log('Signup button');
-    // return client.waitForElementVisible(".color1 > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)", 20000)
-    //     .click('.color1 > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)');
-    return client.waitForElementVisible("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a", 20000)
-    .click('#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a');
->>>>>>> f83eb33e806ed197cbdea60cd6cf3c75723f8863
 });
 Then('I should be presented with registation page', async function () {
     await sleep(20000);
