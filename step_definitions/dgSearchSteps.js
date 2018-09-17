@@ -1,8 +1,11 @@
 const { client, expect } = require('nightwatch-cucumber');
 const { Given, Then, When } = require('cucumber');
 const sleep = require('thread-sleep');
-var coockiePopUp = "body > cookie-law > cookie-law-el > div > div > a > svg";
+const coockiePopUp = "body > cookie-law > cookie-law-el > div > div > a > svg";
+const 
+subTitleOnHome = ".text-uppercase > strong:nth-child(1)";
 let popupclose;
+
 
 
 Given('I am on DataGardener Website', function () {
@@ -20,7 +23,7 @@ Given('I am on DataGardener Website', function () {
 );
 
 Then('I should be able to see home page with {string}', function (message) {
-    return client.expect.element('.text-uppercase > strong:nth-child(1)').text.to.contain(message);
+    return client.expect.element(subTitleOnHome).text.to.contain(message);
 });
 
 When('I search for a company {string}', function (companyName) {
@@ -96,6 +99,16 @@ Then('I should be able to see dashboard', async function () {
     return client.url(client.dashboard_url).waitForElementVisible('body', 20000);
 });
 
+Then("I should be able to see header navigations",async function(){
+    return client.elements( "css selector","#table > tbody > tr",function(result){
+        console.log("The total number of companies are  -----> " + result.value.length );
+         for(var i=1; i<= result.value.length; i++){
+            client.expect.element('#table > tbody > tr:nth-child(' + i +')').to.be.visible;
+         }
+     })
+  
+  });
+
 When('I select county drop down arrow', async function () {
     await sleep(20000);
     return client.waitForElementVisible("#collapseExample > div > div:nth-child(10) > div:nth-child(1) > a.btn.zero-btn-radius.custom-btn-size.pull-right > i", 20000)
@@ -129,12 +142,16 @@ When('I click on trial plan signup button', async function () {
     console.log('Signup button');
     // return client.waitForElementVisible(".color1 > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)", 20000)
     //     .click('.color1 > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)');
-    return client.waitForElementVisible("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a", 20000)
-    .click('#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a');
+    return client.waitForElementVisible("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide > div > div:nth-child(1) a", 20000)
+        .click("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide > div > div:nth-child(1) a");
 });
 Then('I should be presented with registation page', async function () {
     await sleep(20000);
     console.log('Signup page');
     // return client.expect.element('form.ng-invalid > div:nth-child(1) > label:nth-child(1)').to.be.visible;
     return client.expect.element('#top_signUp > div > form > div > div > div > div > div > div > div.col-md-12.text-center > h4').to.be.visible;
+});
+Then('I should be able to see number of search results', async function () {
+
+    return;
 });

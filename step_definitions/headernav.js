@@ -21,11 +21,11 @@ Then('I can see home page with details:', async function (dataTable) {
   
 });
 
-Then("I should be able to see header navigations",async function(){
+// Then("I should be able to see header navigations",async function(){
     
    
     
-});
+// });
 
 
 

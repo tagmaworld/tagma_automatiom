@@ -9,6 +9,9 @@ Feature: Data Gardener home page
         When I select county drop down arrow
         And  I type County  "Hampshire"
         Then I should be able to see the results
+        # And I should be able to see number of search results
+        # When I click on update profile 
+
         
 
            
