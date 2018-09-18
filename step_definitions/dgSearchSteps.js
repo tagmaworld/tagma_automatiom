@@ -1,27 +1,35 @@
 const { client, expect } = require('nightwatch-cucumber');
 const { Given, Then, When } = require('cucumber');
 const sleep = require('thread-sleep');
-var coockiePopUp = "body > cookie-law > cookie-law-el > div > div > a > svg";
+const coockiePopUp = "body > cookie-law > cookie-law-el > div > div > a > svg";
+const 
+subTitleOnHome = ".text-uppercase > strong:nth-child(1)";
 let popupclose;
 
 
+
 Given('I am on DataGardener Website', function () {
-    const homePage = client.page.homePage();
-    homePage.navigate().waitForElementVisible('@wholePageBody', 20000);
-    // return client.url(client.launch_url).waitForElementVisible('body', 20000)
-    //     .waitForElementVisible("body > cookie-law > cookie-law-el > div > div > a > svg", 20000)
-    //     .click("body > cookie-law > cookie-law-el > div > div > a > svg");
-});
+    if (popupclose != 20) {
+        console.log('condition passed');
+        popupclose = 20;
+        return client.url(client.launch_url).waitForElementVisible('body', 20000)
+            .waitForElementVisible(coockiePopUp, 20000).click(coockiePopUp);
+    } else {
+        console.log('condition not passed')
+        return client.url(client.launch_url).waitForElementVisible('body', 20000)
+    }
+}
+
+);
 
 Then('I should be able to see home page with {string}', function (message) {
-    const homePage = client.page.homePage();
-    return homePage.expect.element('@homePageSubTitle').text.to.contain(message);
+    return client.expect.element(subTitleOnHome).text.to.contain(message);
 });
 
 When('I search for a company {string}', function (companyName) {
-    const homePage = client.page.homePage();
-    homePage.searchComapnyData(companyName);
-    homePage.clickSearchButton();
+    console.log('HP executed');
+    return client.waitForElementVisible('.company_search', 20000)
+        .setValue('.company_search', companyName).click('.btn-get-started');
 });
 
 Then('I should be able to see results', async function (dataTable) {
@@ -100,6 +108,16 @@ Then('I should be able to see dashboard', async function () {
     return client.url(client.dashboard_url).waitForElementVisible('body', 20000);
 });
 
+Then("I should be able to see header navigations",async function(){
+    return client.elements( "css selector","#table > tbody > tr",function(result){
+        console.log("The total number of companies are  -----> " + result.value.length );
+         for(var i=1; i<= result.value.length; i++){
+            client.expect.element('#table > tbody > tr:nth-child(' + i +')').to.be.visible;
+         }
+     })
+  
+  });
+
 When('I select county drop down arrow', async function () {
     await sleep(20000);
     return client.waitForElementVisible("#collapseExample > div > div:nth-child(10) > div:nth-child(1) > a.btn.zero-btn-radius.custom-btn-size.pull-right > i", 20000)
@@ -128,17 +146,20 @@ Then('I should be presented with subcription options', async function () {
     return client.waitForElementVisible("#navb > ul > li:nth-child(6) > a", 20000);
 });
 When('I click on trial plan signup button', async function () {
-//     const homePage = client.page.homePage();
-//     homePage.waitForElementVisible({selector:'@signUpLink1', index:1}, 2000).click('@signUpLink1');
-//    await sleep(20000);
-    return client.waitForElementVisible("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a", 20000)
-        .click('#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a');
+
+    await sleep(20000);
+    console.log('Signup button');
+    // return client.waitForElementVisible(".color1 > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)", 20000)
+    //     .click('.color1 > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)');
+    return client.waitForElementVisible("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide > div > div:nth-child(1) a", 20000)
+        .click("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide > div > div:nth-child(1) a");
 });
 Then('I should be presented with registation page', async function () {
     await sleep(20000);
     // return client.expect.element('form.ng-invalid > div:nth-child(1) > label:nth-child(1)').to.be.visible;
     return client.expect.element('#top_signUp > div > form > div > div > div > div > div > div > div.col-md-12.text-center > h4').to.be.visible;
 });
+Then('I should be able to see number of search results', async function () {
 
 
 Then('I enter registration details', async function (dataTable) {
@@ -150,5 +171,5 @@ Then('I enter registration details', async function (dataTable) {
        });
        
   });
-
+})
 
