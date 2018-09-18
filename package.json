@@ -4,7 +4,8 @@
   "description": "nightwatch cucumber e2e sample framework",
   "main": "index.js",
   "scripts": {
-    "test": "nightwatch"
+    "test": "nightwatch",
+    "report": "node create-html-report.js"
   },
   "author": "Alok",
   "license": "ISC",

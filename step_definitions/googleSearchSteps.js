@@ -24,7 +24,16 @@ When('I search for a company {string}', function (companyName) {
     homePage.clickSearchButton();
 });
 
-Then('I should be able to see results', async function () {
+Then('I should be able to see results', async function (dataTable) {
+    await sleep(5000);
+    data = dataTable.rows()
+    return client.elements( "css selector","#table > tbody > tr",function(result){
+         for(var i=1; i<= result.value.length; i++){
+             client.getText()
+         }
+     })
+    
+    console.log(data[0]);
     const homePage = client.page.homePage();
     homePage.verifySearchResultAppearing();
 });
@@ -119,17 +128,31 @@ Then('I should be presented with subcription options', async function () {
     return client.waitForElementVisible("#navb > ul > li:nth-child(6) > a", 20000);
 });
 When('I click on trial plan signup button', async function () {
-    const homePage = client.page.homePage();
-    homePage.waitForElementVisible({selector:'@signUpLink1', index:1}, 2000).click('@signUpLink1');
-   await sleep(20000);
-    // return client.waitForElementVisible("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a", 20000)
-    //     .click('#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a');
+//     const homePage = client.page.homePage();
+//     homePage.waitForElementVisible({selector:'@signUpLink1', index:1}, 2000).click('@signUpLink1');
+//    await sleep(20000);
+    return client.waitForElementVisible("#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a", 20000)
+        .click('#call-to-action > div > div.pricing-table-container > carousel > div > div > slide.active.item.carousel-item > div > div:nth-child(1) > div > div.card-body.bg-white > div > div.col-sm-12.col-md-12.text-center > a');
 });
 Then('I should be presented with registation page', async function () {
     await sleep(20000);
-    console.log('Signup page');
     // return client.expect.element('form.ng-invalid > div:nth-child(1) > label:nth-child(1)').to.be.visible;
     return client.expect.element('#top_signUp > div > form > div > div > div > div > div > div > div.col-md-12.text-center > h4').to.be.visible;
 });
+
+
+Then('I enter registration details', async function (dataTable) {
+    var name;
+    var email;
+    dataTable.rows().forEach(element => {
+         name = element[0];
+         email = element[1];
+       });
+       return client.waitForElementVisible("#name", 20000)
+       .setValue("#name", name)
+       .pause(2000)
+       .waitForElementVisible("#email", 20000)
+       .setValue("#email", email)
+  });
 
 

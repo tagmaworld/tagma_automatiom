@@ -5,7 +5,7 @@ const chromeDriver = require('chromedriver');
 require('nightwatch-cucumber')({
   cucumberArgs: [
     '--require', 'step_definitions',
-    '--tags' , '@homepage',
+    '--tags' , '@registration',
     '--format', 'node_modules/cucumber-pretty',
     '--format', 'json:reports/cucumber.json',
     'features']
@@ -33,6 +33,11 @@ module.exports = {
         browserName: 'chrome',
         javascriptEnabled: true,
         elementScrollBehavior: 1
+      },
+      screenshots : {
+        enabled : true,
+        on_failure : true,
+        path: 'screenshots'
       }
     },
     firefox: {
