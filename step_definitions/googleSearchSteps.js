@@ -148,11 +148,7 @@ Then('I enter registration details', async function (dataTable) {
          name = element[0];
          email = element[1];
        });
-       return client.waitForElementVisible("#name", 20000)
-       .setValue("#name", name)
-       .pause(2000)
-       .waitForElementVisible("#email", 20000)
-       .setValue("#email", email)
+       
   });
 
 
